@@ -15,13 +15,36 @@ class DescriptionPage extends StatefulWidget {
 }
 
 class _DescriptionPageState extends State<DescriptionPage> {
+  double fontSizeCustom = 25;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(widget.box.title),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.dangerous,
+          ),
+        ),
         // automaticallyImplyLeading: eliminate the leading one page behind.
         // automaticallyImplyLeading: false,
-        title: Text(widget.box.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  duration: Duration(seconds: 5),
+                  behavior: SnackBarBehavior.floating,
+                  content: Text('SnackBar'),
+                ),
+              );
+            },
+            icon: const Icon(Icons.info),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -33,19 +56,35 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 spacing: kDouble10,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        fontSizeCustom = 25;
+                      });
+                    },
                     child: const Text('Small Title'),
                   ),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        fontSizeCustom = 35;
+                      });
+                    },
                     child: const Text('Medium Title'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        fontSizeCustom = 50;
+                      });
+                    },
                     child: const Text('Large Title'),
                   ),
                   FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        fontSizeCustom = 200;
+                      });
+                    },
                     child: const Text('Huge Title'),
                   ),
                 ],
@@ -53,8 +92,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
               FittedBox(
                 child: Text(
                   widget.box.title,
-                  style: const TextStyle(
-                    fontSize: 200,
+                  style: TextStyle(
+                    fontSize: fontSizeCustom,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
