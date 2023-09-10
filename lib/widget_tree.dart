@@ -1,4 +1,5 @@
 import 'package:fitness/pages/home_page.dart';
+import 'package:fitness/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class WidgetTree extends StatefulWidget {
@@ -11,10 +12,15 @@ class WidgetTree extends StatefulWidget {
 class _WidgetTreeState extends State<WidgetTree> {
   int currentPage = 0;
 
+  List<Widget> pages = [
+    const HomePage(),
+    const ProfilePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const HomePage(),
+      body: pages.elementAt(currentPage),
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(
