@@ -1,4 +1,5 @@
 import 'package:fitness/pages/home_page.dart';
+import 'package:fitness/widget_tree.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,13 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        // remove the debug banner
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-        ),
-        home: const HomePage());
+      // remove the debug banner
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home: const WidgetTree(),
+    );
   }
 }
